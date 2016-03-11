@@ -62,7 +62,7 @@ make all
 ```
 
 The resulting library is called from a python file, `run_test.py`. Running it gives the following results:
-``
+```
 etime python run_test.py
 
 real    2m43.913s

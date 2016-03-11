@@ -1,3 +1,0 @@
-libcalg_la-hash-pointer.lo: hash-pointer.c hash-pointer.h
-
-hash-pointer.h:

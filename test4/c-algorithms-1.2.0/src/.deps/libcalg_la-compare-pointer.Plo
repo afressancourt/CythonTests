@@ -1,3 +1,0 @@
-libcalg_la-compare-pointer.lo: compare-pointer.c compare-pointer.h
-
-compare-pointer.h:

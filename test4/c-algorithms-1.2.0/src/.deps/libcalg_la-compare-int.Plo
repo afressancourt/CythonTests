@@ -1,0 +1,3 @@
+libcalg_la-compare-int.lo: compare-int.c compare-int.h
+
+compare-int.h:

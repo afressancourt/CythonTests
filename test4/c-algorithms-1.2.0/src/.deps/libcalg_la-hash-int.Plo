@@ -1,0 +1,3 @@
+libcalg_la-hash-int.lo: hash-int.c hash-int.h
+
+hash-int.h:

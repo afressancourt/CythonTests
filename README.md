@@ -50,6 +50,33 @@ user    0m32.592s
 sys     0m2.725s
 ```
 
+On a Ubuntu 15.04 machine with a Intel Core i7-4770 CPU @ 3.40GHz, we have:
+```
+time ./test
+
+real	1m46.972s
+user	1m46.892s
+sys		0m0.020s
+```
+
+While running the pure Python implementation gives:
+```
+time python test.py 
+
+real	1m2.885s
+user	1m2.840s
+sys		0m0.008s
+```
+
+And Pypy gives:
+```
+time python test.py 
+
+real	0m20.122s
+user	0m20.056s
+sys		0m0.052s
+```
+
 ### Test 4: Using the C implementation of a Queue in a .pyx file
 
 This example is taken straight from the Cython documentation page [_Using C libraries_](http://docs.cython.org/src/tutorial/clibraries.html). To use the example, you need to install the _libcalg_ pointed in the documentation page. I have installed version 1.2.0 of the lib [here](https://github.com/fragglet/c-algorithms/releases).
@@ -61,15 +88,24 @@ Compilation of the .pyx file is done with:
 make all
 ```
 
-The resulting library is called from a python file, `run_test.py`. Running it gives the following results:
+The resulting library is called from a python file, `run_test.py`. Running it on the Macbook gives the following results:
 ```
-etime python run_test.py
+time python run_test.py
 
 real    2m43.913s
 user    2m32.358s
 sys     0m11.459s
 ```
 To compare with Test 3 results.
+
+On the Ubuntu machine, we have the following results:
+```
+time python run_test.py 
+
+real	0m32.093s
+user	0m32.060s
+sys		0m0.012s
+```
 
 ### Test 5: Using the C implementation of a Queue in a .pyx file, compiled as a standalone executable
 
@@ -94,3 +130,17 @@ user    2m53.630s
 sys     0m11.924s
 
 ```
+
+On the Ubuntu machine, we have the following results:
+```
+time ./test
+real	0m42.867s
+user	0m42.836s
+sys		0m0.004s
+```
+
+## Further studies
+
+Cython's performances on Ubuntu are slightly better, but are not yet at par with PyPy's performances. Yet they are better than using teh pure Python implementation.
+
+The reason might be that on MacOSX, teh default Clang compiler is used rather than GCC (To investigate).

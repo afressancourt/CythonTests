@@ -35,3 +35,30 @@ real    0m35.665s
 user    0m32.592s
 sys     0m2.725s
 ```
+
+On a Ubuntu 15.04 machine with a Intel Core i7-4770 CPU @ 3.40GHz, we have:
+```
+time ./test
+
+real	1m46.972s
+user	1m46.892s
+sys		0m0.020s
+```
+
+While running the pure Python implementation gives:
+```
+time python test.py 
+
+real	1m2.885s
+user	1m2.840s
+sys		0m0.008s
+```
+
+And Pypy gives:
+```
+time python test.py 
+
+real	0m20.122s
+user	0m20.056s
+sys		0m0.052s
+```

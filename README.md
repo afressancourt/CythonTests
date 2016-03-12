@@ -143,4 +143,4 @@ sys		0m0.004s
 
 Cython's performances on Ubuntu are slightly better, but are not yet at par with PyPy's performances. Yet they are better than using teh pure Python implementation.
 
-The reason might be that on MacOSX, teh default Clang compiler is used rather than GCC (To investigate).
+The reason might be that on MacOSX, the default Clang compiler is used rather than GCC (To investigate).

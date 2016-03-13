@@ -1,3 +1,8 @@
+#cython: boundscheck=False
+#cython: wraparound=False
+#cython: nonecheck=False
+#cython: cdivision=True
+
 cimport cqueue
 
 cdef class Queue:

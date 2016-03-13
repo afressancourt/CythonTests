@@ -1,3 +1,8 @@
+#cython: boundscheck=False
+#cython: wraparound=False
+#cython: nonecheck=False
+#cython: cdivision=True
+
 cimport cqueue
 
 cdef class Queue:
@@ -46,7 +51,7 @@ cdef class Queue:
     def __bool__(self):    # same as __nonzero__ in Python 2.x
         return not cqueue.queue_is_empty(self._c_queue)
 
-cdef cmain():
+def main():
     cdef Queue dq = Queue()
     cdef int i, t, result
     cdef int N = 1000000
@@ -59,8 +64,6 @@ cdef cmain():
         while dq:
             result = dq.pop()
 
-def main():
-    cmain()
 
 if __name__ == '__main__':
     main()

@@ -98,18 +98,22 @@ sys     0m11.459s
 ```
 To compare with Test 3 results.
 
-On the Ubuntu machine, we have the following results:
+On the Ubuntu machine, We need to set the `LD_LIBRARY_PATH` variable by typing:
+```
+export LD_LIBRARY_PATH=/usr/local/lib
+```
+
+Then, we have the following results:
 ```
 time python run_test.py 
-
-real	0m32.093s
-user	0m32.060s
-sys		0m0.012s
+real	0m32.197s
+user	0m32.152s
+sys		0m0.028s
 ```
 
 ### Test 5: Using the C implementation of a Queue in a .pyx file, compiled as a standalone executable
 
-In this example, I use teh C Queue implementation used in Test 4, but I try to compile the resulting C file as a standalone executable.
+In this example, I use the C Queue implementation used in Test 4, but I try to compile the resulting C file as a standalone executable.
 
 In the Makefile, I have added the following options:
 * `LIBCALGDIR := /usr/local/include/libcalg-1.0` has been added to the CFLAGS
@@ -138,6 +142,50 @@ real	0m42.867s
 user	0m42.836s
 sys		0m0.004s
 ```
+
+### Test 6: Compilation option test while using C implementation of Queue in the .pyx file.
+
+Here, we test the effect of some compilation option that can help improve the performance while running Cython. We had the following lines at the beginning of the .pyx file:
+```
+#cython: boundscheck=False
+#cython: wraparound=False
+#cython: nonecheck=False
+#cython: cdivision=True
+```
+
+Compilation of the .pyx file is done with:
+```
+make all
+```
+We perform the test on the Ubuntu machine.
+```
+time python run_test.py 
+
+real	0m32.405s
+user	0m32.376s
+sys		0m0.008s
+```
+
+The performance difference is not striking here.
+
+### Test 7: Compilation option test while using the C implementation of a Queue in a .pyx file, compiled as a standalone executable
+
+We perform about the same test as in Test 6, adding the following lines at the beginning of the .pyx file.
+```
+#cython: boundscheck=False
+#cython: wraparound=False
+#cython: nonecheck=False
+#cython: cdivision=True
+```
+We perform the test on the Ubuntu machine.
+```
+time ./test
+
+real	0m42.768s
+user	0m42.736s
+sys		0m0.004s
+```
+The performance gain is not impressive here either.
 
 ## Further studies
 

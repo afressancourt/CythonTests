@@ -19,11 +19,15 @@ sys     0m11.459s
 ```
 To compare with Test 3 results.
 
-On the Ubuntu machine, we have the following results:
+On the Ubuntu machine, We need to set the `LD_LIBRARY_PATH` variable by typing:
+```
+export LD_LIBRARY_PATH=/usr/local/lib
+```
+
+Then, we have the following results:
 ```
 time python run_test.py 
-
-real	0m32.093s
-user	0m32.060s
-sys		0m0.012s
+real	0m32.197s
+user	0m32.152s
+sys		0m0.028s
 ```
